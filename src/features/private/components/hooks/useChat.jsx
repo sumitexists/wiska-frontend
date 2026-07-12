@@ -17,7 +17,7 @@ export default function useChat(contactId, messages, token) {
 
       // 1. Resolve host domain from environment or fallback to local development
       // Strip out 'http://' or 'https://' from VITE_APP_URL if provided
-      const rawApiUrl = import.meta.env.VITE_APP_URL || "localhost:8000";
+      const rawApiUrl = import.meta.env.VITE_API_URL || "localhost:8000";
       const cleanHost = rawApiUrl.replace(/^https?:\/\//, "");
 
       // 2. Select protocol based on the scheme (wss:// for safe production, ws:// for development)
