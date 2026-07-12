@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Space Grotesk';
+    src: url("../src/assets/fonts/SpaceGrotesk-Regular.ttf");
+}
+@font-face {
+    font-family: 'Kranky';
+    src: url("../src/assets/fonts/Kranky-Regular.ttf");
+}
+
+@theme {
+    --font-grotesk: 'Space Grotesk', monospace, sans-serif;
+    --font-kranky: 'Kranky' , monospace , sans-serif;
+}
