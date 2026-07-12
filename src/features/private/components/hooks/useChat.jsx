@@ -14,13 +14,23 @@ export default function useChat(contactId, messages, token) {
   useEffect(() => {
     const connectWebSocket = () => {
       console.log("Attempting WebSocket connection...");
-      const ws = new WebSocket(
-        `ws://localhost:8000/private/messages/ws/chat/${contactId}/?token=${token}`
-      );
+
+      // 1. Resolve host domain from environment or fallback to local development
+      // Strip out 'http://' or 'https://' from VITE_APP_URL if provided
+      const rawApiUrl = import.meta.env.VITE_APP_URL || "localhost:8000";
+      const cleanHost = rawApiUrl.replace(/^https?:\/\//, "");
+
+      // 2. Select protocol based on the scheme (wss:// for safe production, ws:// for development)
+      const wsScheme = rawApiUrl.startsWith("https") ? "wss" : "ws";
+
+      // 3. Construct URL dynamically
+      const wsUrl = `${wsScheme}://${cleanHost}/private/messages/ws/chat/${contactId}/?token=${token}`;
+
+      const ws = new WebSocket(wsUrl);
       wsRef.current = ws;
 
       ws.onopen = () => {
-        console.log("WebSocket connection established");
+        console.log("WebSocket connection established:", wsUrl);
       };
 
       ws.onmessage = (event) => {
@@ -34,7 +44,6 @@ export default function useChat(contactId, messages, token) {
           console.log(`Connection closed cleanly, code=${event.code}`);
         } else {
           console.log("Connection died. Scheduling reconnect...");
-          
           reconnectTimeoutRef.current = setTimeout(() => {
             connectWebSocket();
           }, 5000);
@@ -46,7 +55,10 @@ export default function useChat(contactId, messages, token) {
       };
     };
 
-    connectWebSocket();
+    // Only establish a connection if vital properties are ready
+    if (contactId && token) {
+      connectWebSocket();
+    }
 
     return () => {
       if (reconnectTimeoutRef.current) {
@@ -56,7 +68,7 @@ export default function useChat(contactId, messages, token) {
         wsRef.current.close();
       }
     };
-  }, [contactId, token]); // Add token to dependency array if it can change dynamically
+  }, [contactId, token]);
 
   const sendMessage = (content, receiver) => {
     if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {

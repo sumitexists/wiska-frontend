@@ -18,7 +18,6 @@ function Post() {
     e.preventDefault();
     if (comment.trim()) {
         const newComment =await postComment({ comment: comment, postId: post.id })
-        console.log(newComment)
         setComment("")
         setComments((prev)=> [newComment,...prev ])
         setPost((prevPost) => ({ ...prevPost, number_of_comments: prevPost.number_of_comments + 1 }));

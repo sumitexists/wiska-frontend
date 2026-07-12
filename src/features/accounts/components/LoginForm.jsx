@@ -23,7 +23,6 @@ function LoginForm() {
       }
     }
     catch (err) {
-      console.log("Nhi huaa")
       console.error("Authentication failed:", err.message);
       setloginFailed("Wrong Credentials!")
     }

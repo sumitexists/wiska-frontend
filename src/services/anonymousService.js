@@ -6,7 +6,6 @@ export const postComment = async ({ comment, postId }) => {
       post: parseInt(postId),
       content: comment,
     });
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log("Error in posting comment", error);
