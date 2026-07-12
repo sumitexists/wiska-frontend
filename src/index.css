@@ -13,3 +13,7 @@
     --font-grotesk: 'Space Grotesk', monospace, sans-serif;
     --font-kranky: 'Kranky' , monospace , sans-serif;
 }
+
+#root{
+    font-size: 1rem;
+}
