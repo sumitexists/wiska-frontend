@@ -41,7 +41,7 @@ function ChatRoom() {
   }, [chatMessages]);
 
   return (
-    <div className=" h-screen flex flex-col justify-between">
+    <div className=" h-full flex flex-col justify-between">
       <ReceiverBlock receiverUsername={username} />
       <div
         ref={containerRef}
