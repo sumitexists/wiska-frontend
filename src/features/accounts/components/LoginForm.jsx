@@ -44,7 +44,6 @@ function LoginForm() {
         <InputField placeholder="&#x1F464; Username" type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
         <InputField placeholder="&#x1F512;Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         <div className="flex w-full justify-between items-center">
-          <Link to="#" className=" self-start text-blue-400 ml-6 mb-8 hover:text-blue-500 hover:underline"> Forget Password?</Link>
           <Link to="/register" className=" self-start text-blue-400 ml-6 mb-8 hover:text-blue-500 hover:underline tracking-tighter pr-6"> Don't have an account?</Link>
         </div>
         
