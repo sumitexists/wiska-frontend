@@ -14,6 +14,23 @@
     --font-kranky: 'Kranky' , monospace , sans-serif;
 }
 
-#root{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    /* Triggers Chrome to disable dynamic layout inflation algorithms */
+    max-height: 1000000px !important;
+    
+    /* Strict structural override sequence */
+    -webkit-text-size-adjust: none !important;
+    -moz-text-size-adjust: none !important;
+    -ms-text-size-adjust: none !important;
+    text-size-adjust: none !important;
+
+    /* Base rigid fallback constraints */
     font-size: 16px !important;
+  }
 }
+
