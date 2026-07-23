@@ -11,7 +11,7 @@ export default function VerifiedProfilePage() {
     }
     return(
 
-        <div className="w-full h-dvh grid grid-cols-[5fr_10fr]">
+        <div className="w-full h-screen grid grid-cols-[5fr_10fr]">
             <div className="flex flex-col w-full h-screen bg-zinc-800 border-r border-zinc-700">
                 <div className=" py-6 px-4 bg-zinc-800 text-white flex justify-between items-center">
                     <span className="text-3xl font-bold">Contacts</span>
