@@ -1,11 +1,12 @@
 
 import NavBar from '../components/layout/Navbar'
 import Cards from '../components/ui/Cards'
-import ChatField from '../features/private/components/ui/ChatField'
-import ChatBubble from '../features/private/components/ui/ChatBubble'
 import useUser from '../context/auth/AuthContext'
+import {useNavigate} from "react-router-dom"
 
 function HomePage() {
+  const user = useUser()
+  const navigate = useNavigate();
   return (
     <>
     <header>
@@ -34,7 +35,7 @@ function HomePage() {
            btnClassName='text-lg py-4 font-semibold bg-white hover:bg-white text-black rounded-none w-3/4 capitalize'
            btnText='[ ENTER VERIFIED PROFILE ]'
            content='Connect safely using your real identity. Build genuine friendships and enjoy authentic, trusted conversations in a welcoming, comfortable space where you can chat openly with the people you know best.'
-           url="/verified-profile"
+           url={user?"/verified-profile" : "/login"}
 
           />
           <Cards heading='Anonymous Mode' 
@@ -44,7 +45,7 @@ function HomePage() {
            btnClassName='text-lg py-4 font-semibold bg-cyan-400 text-black hover:bg-cyan-400 rounded-none w-3/4 capitalize'
            btnText='[ EQUIP MASK ]'
            content='Slip on the mask and share your true thoughts without holding back. Enjoy totally untraceable, judgment-free conversations where you can speak freely and connect deeply without ever revealing your identity.'
-           url="/anonymous-mode"
+           url=={user?"/anonymous-mode" : "/login"}"/anonymous-mode"
 
           />
 
