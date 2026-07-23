@@ -6,25 +6,20 @@
     <title>Wiska | Two Sides. One You.</title>
     <script>
   (function() {
-    function resetZoom() {
-      // Detect the current scaling factor (e.g., 1.25 for 125%)
+    // Only target desktop screens (width greater than 1024px)
+    if (window.matchMedia('(min-width: 1025px)').matches) {
       const devicePixelRatio = window.devicePixelRatio || 1;
       
       if (devicePixelRatio !== 1) {
         // Calculate the inverse scale required to hit 100%
         const inverseScale = 1 / devicePixelRatio;
         
-        // Apply the fix to the HTML document root
+        // Apply the fix once to the document root
         document.documentElement.style.zoom = inverseScale;
       }
-    } 
-    
-    // Execute immediately and listen for window resizing
-    resetZoom();
-    window.addEventListener('resize', resetZoom);
+    }
   })();
 </script>
-
   </head>
   <body style="background-color: black; color: white">
     <div id="root"></div>
