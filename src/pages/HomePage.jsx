@@ -45,7 +45,7 @@ function HomePage() {
            btnClassName='text-lg py-4 font-semibold bg-cyan-400 text-black hover:bg-cyan-400 rounded-none w-3/4 capitalize'
            btnText='[ EQUIP MASK ]'
            content='Slip on the mask and share your true thoughts without holding back. Enjoy totally untraceable, judgment-free conversations where you can speak freely and connect deeply without ever revealing your identity.'
-           url=={user?"/anonymous-mode" : "/login"}"/anonymous-mode"
+           url={user?"/anonymous-mode" : "/login"}"/anonymous-mode"
 
           />
 
