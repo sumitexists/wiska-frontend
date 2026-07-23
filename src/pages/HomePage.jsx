@@ -5,7 +5,7 @@ import useUser from '../context/auth/AuthContext'
 import {useNavigate} from "react-router-dom"
 
 function HomePage() {
-  const user = useUser()
+  const {user} = useUser()
   const navigate = useNavigate();
   return (
     <>
