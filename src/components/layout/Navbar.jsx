@@ -37,7 +37,6 @@ function NavBar() {
             <li><NavLink to="/" className={({isActive}) => `${activeColor(isActive)} hover:underline`}>Home</NavLink></li>
             <li><NavLink to={user? "/verified-profile" : "/login"} className={({isActive}) => `${activeColor(isActive)} hover:underline`}>Verified Profile</NavLink></li>
             <li><NavLink to={user? "/anonymous-mode" : "/login"} className={({isActive}) => `${activeColor(isActive)} hover:underline`}>Anonymous Mode</NavLink></li>
-            <li><NavLink to="/help" className={({isActive}) => `${activeColor(isActive)} hover:underline`}>Help</NavLink></li>
         </ul>
 
         {user&&user.username?<ul className="flex justify-items-end gap-x-4 "> 
